@@ -452,7 +452,7 @@ public class Util {
     }
 
     public static void addDefaultUserAgent(@NonNull final DownloadConnection connection) {
-        final String userAgent = "OkDownload/" + BuildConfig.VERSION_NAME;
+        final String userAgent = "OkDownload/" + "2323";
         connection.addHeader(USER_AGENT, userAgent);
     }
 }

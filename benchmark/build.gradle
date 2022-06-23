@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
-    compileOptions {
-        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
-        targetCompatibility rootProject.ext.targetCompatibilityVersion
-    }
+//    compileOptions {
+//        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
+//        targetCompatibility rootProject.ext.targetCompatibilityVersion
+//    }
 
     lintOptions {
         lintConfig file('lint.xml')

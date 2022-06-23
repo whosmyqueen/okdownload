@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'org.jetbrains.dokka'
+//apply plugin: 'org.jetbrains.dokka'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -36,10 +36,10 @@ dependencies {
     compileOnly project(':okdownload')
 }
 
-dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/docs/javadoc"
-}
+//dokka {
+//    outputFormat = 'html'
+//    outputDirectory = "$buildDir/docs/javadoc"
+//}
 
 tasks.withType(Javadoc).all {
     excludes = ['**/*.kt']
