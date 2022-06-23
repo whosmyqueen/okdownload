@@ -16,7 +16,7 @@
 
 package com.liulishuo.okdownload.sample.util.queue
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +28,7 @@ import com.liulishuo.okdownload.sample.R
 
 class QueueRecyclerAdapter(
     private val controller: QueueController
-) : RecyclerView.Adapter<QueueRecyclerAdapter.QueueViewHolder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<QueueRecyclerAdapter.QueueViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QueueViewHolder {
         return QueueViewHolder(LayoutInflater.from(parent.context).inflate(
@@ -43,7 +43,7 @@ class QueueRecyclerAdapter(
 
     override fun getItemCount(): Int = controller.size()
 
-    class QueueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class QueueViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         var nameTv: TextView = itemView.findViewById(R.id.nameTv)
         var priorityTv: TextView = itemView.findViewById(R.id.priorityTv)
         var prioritySb: SeekBar = itemView.findViewById(R.id.prioritySb)

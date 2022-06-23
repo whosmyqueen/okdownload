@@ -20,8 +20,8 @@
     <string name="title_single">Single</string>
     <string name="title_multiple">Multiple</string>
     <string name="title_queue">Queue</string>
-    <string name="title_content_uri">Content Uri</string>
-    <string name="title_notification">Notification</string>
+    <string name="title_content_uri">内容Uri</string>
+    <string name="title_notification">通知</string>
     <string name="start_download">Start Download</string>
     <string name="cancel_download">Cancel download</string>
     <string name="start_same_task">Start Same Task</string>
@@ -30,31 +30,31 @@
     <string name="task_title">Task(0~%1$s)</string>
     <string name="get_status">Get Status</string>
     <string name="github">GITHUB</string>
-    <string name="start">START</string>
-    <string name="cancel">CANCEL</string>
+    <string name="start">开始</string>
+    <string name="cancel">取消</string>
     <string name="parallel">Parallel</string>
     <string name="serial">Serial</string>
-    <string name="priority">Priority(%1$d)</string>
-    <string name="state_idle">IDLE</string>
-    <string name="state_pending">PENDING</string>
-    <string name="state_unknown">UNKNOWN</string>
-    <string name="state_running">RUNNING</string>
+    <string name="priority">优先级(%1$d)</string>
+    <string name="state_idle">初始</string>
+    <string name="state_pending">挂起，待定</string>
+    <string name="state_unknown">未知</string>
+    <string name="state_running">正在运行</string>
 
     <!-- entry list -->
-    <string name="single_download_title">Single Download</string>
-    <string name="single_download_desc">On this demo you can see the simplest way to download a task.</string>
-    <string name="each_block_progress_title">Show Each Block Progress</string>
-    <string name="each_block_progress_desc">On this demo we will download a task and display each block progress for it.</string>
-    <string name="queue_download_title">Queue Download</string>
-    <string name="queue_download_desc">On this demo you will see how to download batch tasks as a queue and download with different priority.</string>
+    <string name="single_download_title">单次下载</string>
+    <string name="single_download_desc">在这个演示中，您可以看到下载任务的最简单方法。</string>
+    <string name="each_block_progress_title">显示每个块进度</string>
+    <string name="each_block_progress_desc">在这个演示中，我们将下载一个任务并显示它的每个块进度。</string>
+    <string name="queue_download_title">队列下载</string>
+    <string name="queue_download_desc">在这个演示中，您将看到如何将批处理任务作为队列下载，并以不同的优先级下载。</string>
     <string name="task_manager_title">Task Manager</string>
     <string name="task_manager_desc">On this demo we will using UnifiedListenerManager to manage all tasks and you can attach listener for a task any time any where.</string>
-    <string name="content_uri_desc">On this demo we will using Content Uri to store data for the task instead of using accessible file path.</string>
-    <string name="notification_desc">On this demo we will show you simple case to use notification with okdownload.</string>
+    <string name="content_uri_desc">在这个演示中，我们将使用内容Uri来存储任务的数据，而不是使用可访问的文件路径。</string>
+    <string name="notification_desc">在这个演示中，我们将向您展示使用okdownload通知的简单案例。</string>
     <string name="comprehensive_case_title">Comprehensive Case</string>
     <string name="comprehensive_case_desc">On this demo you can see a comprehensive demo with several tabs switch among pages.</string>
-    <string name="bunch_download_title">Bunch Download</string>
-    <string name="bunch_download_desc">On this demo we will download hundreds of tasks on bunch and display processes of them.</string>
+    <string name="bunch_download_title">束下载</string>
+    <string name="bunch_download_desc">在这个演示中，我们将下载bunch上的数百个任务，并显示它们的进程。</string>
 
     <!-- listener -->
     <string name="info_ready">Info Ready</string>

@@ -16,8 +16,8 @@
 
 package com.liulishuo.okdownload.core.download;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.liulishuo.okdownload.DownloadTask;
 import com.liulishuo.okdownload.OkDownload;
@@ -54,9 +54,12 @@ public class DownloadChain implements Runnable {
 
     private final int blockIndex;
 
-    @NonNull private final DownloadTask task;
-    @NonNull private final BreakpointInfo info;
-    @NonNull private final DownloadCache cache;
+    @NonNull
+    private final DownloadTask task;
+    @NonNull
+    private final BreakpointInfo info;
+    @NonNull
+    private final DownloadCache cache;
 
     final List<Interceptor.Connect> connectInterceptorList = new ArrayList<>();
     final List<Interceptor.Fetch> fetchInterceptorList = new ArrayList<>();
@@ -71,7 +74,8 @@ public class DownloadChain implements Runnable {
 
     private final CallbackDispatcher callbackDispatcher;
 
-    @NonNull private final DownloadStore store;
+    @NonNull
+    private final DownloadStore store;
 
     static DownloadChain createChain(int blockIndex, DownloadTask task,
                                      @NonNull BreakpointInfo info,
@@ -104,11 +108,13 @@ public class DownloadChain implements Runnable {
         currentThread.interrupt();
     }
 
-    @NonNull public DownloadTask getTask() {
+    @NonNull
+    public DownloadTask getTask() {
         return task;
     }
 
-    @NonNull public BreakpointInfo getInfo() {
+    @NonNull
+    public BreakpointInfo getInfo() {
         return this.info;
     }
 
@@ -120,7 +126,8 @@ public class DownloadChain implements Runnable {
         this.connection = connection;
     }
 
-    @NonNull public DownloadCache getCache() {
+    @NonNull
+    public DownloadCache getCache() {
         return cache;
     }
 
@@ -132,11 +139,13 @@ public class DownloadChain implements Runnable {
         return this.cache.getOutputStream();
     }
 
-    @Nullable public synchronized DownloadConnection getConnection() {
+    @Nullable
+    public synchronized DownloadConnection getConnection() {
         return this.connection;
     }
 
-    @NonNull public synchronized DownloadConnection getConnectionOrCreate() throws IOException {
+    @NonNull
+    public synchronized DownloadConnection getConnectionOrCreate() throws IOException {
         if (cache.isInterrupt()) throw InterruptException.SIGNAL;
 
         if (connection == null) {
@@ -230,9 +239,12 @@ public class DownloadChain implements Runnable {
 
     final AtomicBoolean finished = new AtomicBoolean(false);
 
-    boolean isFinished() { return finished.get(); }
+    boolean isFinished() {
+        return finished.get();
+    }
 
-    @NonNull public DownloadStore getDownloadStore() {
+    @NonNull
+    public DownloadStore getDownloadStore() {
         return store;
     }
 
@@ -258,7 +270,8 @@ public class DownloadChain implements Runnable {
     }
 
     private final Runnable releaseConnectionRunnable = new Runnable() {
-        @Override public void run() {
+        @Override
+        public void run() {
             releaseConnection();
         }
     };
