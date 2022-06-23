@@ -173,8 +173,8 @@ public class MultiPointOutputStream {
                     close(blockIndex);
                 } catch (IOException e) {
                     // just ignored and print log.
-                    Util.d(TAG, "OutputStream close failed task[" + task.getId()
-                            + "] block[" + blockIndex + "]" + e);
+                    Util.e(TAG, "OutputStream close failed task[" + task.getId()
+                            + "] block[" + blockIndex + "]", e);
                 }
             }
 
@@ -471,7 +471,7 @@ public class MultiPointOutputStream {
             }
             success = true;
         } catch (IOException ex) {
-            Util.w(TAG, "OutputStream flush and sync data to filesystem failed " + ex);
+            Util.e(TAG, "OutputStream flush and sync data to filesystem failed ", ex);
             success = false;
         }
 

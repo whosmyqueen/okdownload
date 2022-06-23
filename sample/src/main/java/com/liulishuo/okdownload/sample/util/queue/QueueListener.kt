@@ -34,7 +34,7 @@ internal class QueueListener : DownloadListener1() {
     private val holderMap = SparseArray<QueueViewHolder>()
 
     fun bind(task: DownloadTask, holder: QueueViewHolder) {
-        Log.i(TAG, "bind " + task.id + " with " + holder)
+//        Log.i(TAG, "bind " + task.id + " with " + holder)
         // replace.
         val size = holderMap.size()
         for (i in 0 until size) {
@@ -154,7 +154,7 @@ internal class QueueListener : DownloadListener1() {
 
         holder.statusTv.text = status
 
-        Log.i(TAG, "progress " + task.id + " with " + holder)
+//        Log.i(TAG, "progress " + task.id + " with " + holder)
         ProgressUtil.updateProgressToViewWithMark(holder.progressBar, currentOffset, false)
     }
 
