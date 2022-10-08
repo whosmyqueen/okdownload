@@ -128,7 +128,7 @@ class SingleActivity : BaseSampleActivity() {
         progressBar: ProgressBar,
         actionTv: TextView
     ) {
-        Log.d(TAG, "开始下载")
+        Log.d("SingleActivityTAG", "开始下载")
         var totalLength: Long = 0
         var readableTotalLength: String? = null
         task?.enqueue4WithSpeed(
@@ -154,6 +154,7 @@ class SingleActivity : BaseSampleActivity() {
             }
         ) { task, cause, realCause, taskSpeed ->
             val statusWithSpeed = cause.toString() + " " + taskSpeed.averageSpeed()
+            Log.d("SingleActivityTAG", "下载完成： $statusWithSpeed")
             statusTv.text = statusWithSpeed
             actionTv.setText(R.string.start)
             // remove mark
@@ -161,11 +162,11 @@ class SingleActivity : BaseSampleActivity() {
             if (cause == EndCause.COMPLETED) {
                 val realMd5 = fileToMD5(task.file!!.absolutePath)
                 if (!realMd5!!.equals("f836a37a5eee5dec0611ce15a76e8fd5", ignoreCase = true)) {
-                    Log.e(TAG, "file is wrong because of md5 is wrong $realMd5")
+                    Log.e("SingleActivityTAG", "file is wrong because of md5 is wrong $realMd5")
                 }
             }
             realCause?.let {
-                Log.e(TAG, "download error", it)
+                Log.e("SingleActivityTAG", "download error", it)
             }
         }
 
