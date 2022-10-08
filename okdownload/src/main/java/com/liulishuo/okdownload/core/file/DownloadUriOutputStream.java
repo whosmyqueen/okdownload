@@ -51,14 +51,14 @@ public class DownloadUriOutputStream implements DownloadOutputStream {
         this.out = new BufferedOutputStream(fos, bufferSize);
     }
 
-    DownloadUriOutputStream(@NonNull FileChannel channel, @NonNull ParcelFileDescriptor pdf,
-                            @NonNull FileOutputStream fos,
-                            @NonNull BufferedOutputStream out) {
-        this.channel = channel;
-        this.pdf = pdf;
-        this.fos = fos;
-        this.out = out;
-    }
+//    DownloadUriOutputStream(@NonNull FileChannel channel, @NonNull ParcelFileDescriptor pdf,
+//                            @NonNull FileOutputStream fos,
+//                            @NonNull BufferedOutputStream out) {
+//        this.channel = channel;
+//        this.pdf = pdf;
+//        this.fos = fos;
+//        this.out = out;
+//    }
 
     @Override
     public void write(byte[] b, int off, int len) throws IOException {

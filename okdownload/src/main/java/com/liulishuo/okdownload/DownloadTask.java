@@ -766,7 +766,7 @@ public class DownloadTask extends IdentifiedTask implements Comparable<DownloadT
         }
 
         /**
-         * Set the minimum internal milliseconds of progress callbacks.
+         * 回调进度的最小间隔毫秒
          * default is {@link #DEFAULT_MIN_INTERVAL_MILLIS_CALLBACK_PROCESS}
          *
          * @param minIntervalMillisCallbackProcess the minimum interval milliseconds of  progress
@@ -884,6 +884,7 @@ public class DownloadTask extends IdentifiedTask implements Comparable<DownloadT
         }
 
         /**
+         * 忽略过去已完成的相同任务
          * Set whether the task is completed directly without any further action when check the task
          * has been downloaded.
          * default is {@link #DEFAULT_PASS_IF_ALREADY_COMPLETED}

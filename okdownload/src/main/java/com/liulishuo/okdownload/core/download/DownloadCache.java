@@ -143,7 +143,7 @@ public class DownloadCache {
             setUnknownError(e);
             if (!(e instanceof SocketException)) {
                 // we know socket exception, so ignore it,  otherwise print stack trace.
-                Util.d("DownloadCache", "catch unknown error " + e);
+                Util.e("DownloadCache", "catch unknown error ", e);
             }
         }
     }

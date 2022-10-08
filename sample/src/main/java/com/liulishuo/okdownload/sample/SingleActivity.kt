@@ -82,9 +82,9 @@ class SingleActivity : BaseSampleActivity() {
         val parentFile = DemoUtil.getParentFile(this)
         task = DownloadTask.Builder(url, parentFile)
             .setFilename(filename)
-            // the minimal interval millisecond for callback progress
+            // 回调进度的最小间隔毫秒
             .setMinIntervalMillisCallbackProcess(16)
-            // ignore the same task has already completed in the past.
+            // 忽略过去已完成的相同任务
             .setPassIfAlreadyCompleted(false)
             .build()
     }
@@ -128,6 +128,7 @@ class SingleActivity : BaseSampleActivity() {
         progressBar: ProgressBar,
         actionTv: TextView
     ) {
+        Log.d(TAG, "开始下载")
         var totalLength: Long = 0
         var readableTotalLength: String? = null
         task?.enqueue4WithSpeed(

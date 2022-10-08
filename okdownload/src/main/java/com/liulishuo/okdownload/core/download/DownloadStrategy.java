@@ -68,6 +68,12 @@ public class DownloadStrategy {
         return new ResumeAvailableResponseCheck(connected, blockIndex, info);
     }
 
+    /**
+     * 计算 分几块下载
+     * @param task
+     * @param totalLength
+     * @return
+     */
     public int determineBlockCount(@NonNull DownloadTask task, long totalLength) {
         if (task.getSetConnectionCount() != null) return task.getSetConnectionCount();
 
@@ -88,6 +94,7 @@ public class DownloadStrategy {
         }
 
         return 5;
+//        return 1;
     }
 
     public long reuseIdledSameInfoThresholdBytes() {

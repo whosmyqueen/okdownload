@@ -258,6 +258,9 @@ public class MultiPointOutputStream {
 
     public void inspectComplete(int blockIndex) throws IOException {
         final BlockInfo blockInfo = info.getBlock(blockIndex);
+        long currentOffset = blockInfo.getCurrentOffset();
+        long contentLength = blockInfo.getContentLength();
+        Util.d(TAG, "currentOffset: " + currentOffset + " ,contentLength: " + contentLength);
         if (!Util.isCorrectFull(blockInfo.getCurrentOffset(), blockInfo.getContentLength())) {
             throw new IOException("The current offset on block-info isn't update correct, "
                     + blockInfo.getCurrentOffset() + " != " + blockInfo.getContentLength()
@@ -280,7 +283,10 @@ public class MultiPointOutputStream {
         final DownloadOutputStream outputStream = outputStreamMap.get(blockIndex);
         if (outputStream != null) {
             outputStream.close();
-            outputStreamMap.remove(blockIndex);
+            synchronized (noSyncLengthMap) {
+                outputStreamMap.remove(blockIndex);
+                noSyncLengthMap.remove(blockIndex);
+            }
             Util.d(TAG, "OutputStream close task[" + task.getId() + "] block[" + blockIndex + "]");
         }
     }
@@ -529,6 +535,9 @@ public class MultiPointOutputStream {
                 if (seekPoint > 0) {
                     // seek to target point
                     outputStream.seek(seekPoint);
+                    Util.d(TAG, "Create output stream write from (" + task.getId()
+                            + ") block(" + blockIndex + ") " + seekPoint);
+                } else {
                     Util.d(TAG, "Create output stream write from (" + task.getId()
                             + ") block(" + blockIndex + ") " + seekPoint);
                 }

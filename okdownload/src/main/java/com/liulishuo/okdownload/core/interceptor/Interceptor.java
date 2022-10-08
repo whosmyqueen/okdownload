@@ -25,8 +25,8 @@ import java.io.IOException;
 
 public interface Interceptor {
     interface Connect {
-        @NonNull DownloadConnection.Connected interceptConnect(DownloadChain chain)
-                throws IOException;
+        @NonNull
+        DownloadConnection.Connected interceptConnect(DownloadChain chain) throws IOException;
     }
 
     interface Fetch {

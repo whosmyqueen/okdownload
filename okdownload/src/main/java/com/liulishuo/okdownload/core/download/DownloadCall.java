@@ -205,6 +205,7 @@ public class DownloadCall extends NamedRunnable implements Comparable<DownloadCa
                         assembleBlockAndCallbackFromBeginning(info, remoteCheck,
                                 localCheck.getCauseOrThrow());
                     } else {
+                        //从断点开始下载
                         okDownload.callbackDispatcher().dispatch()
                                 .downloadFromBreakpoint(task, info);
                     }
@@ -300,7 +301,14 @@ public class DownloadCall extends NamedRunnable implements Comparable<DownloadCa
         return task.getPriority();
     }
 
-    void start(final DownloadCache cache, BreakpointInfo info) throws InterruptedException {
+
+    /**
+     * 开始添加 分块
+     * @param cache
+     * @param info
+     * @throws InterruptedException
+     */
+    private void start(final DownloadCache cache, BreakpointInfo info) throws InterruptedException {
         final int blockCount = info.getBlockCount();
         final List<DownloadChain> blockChainList = new ArrayList<>(info.getBlockCount());
         final List<Integer> blockIndexList = new ArrayList<>();
@@ -309,7 +317,6 @@ public class DownloadCall extends NamedRunnable implements Comparable<DownloadCa
             if (Util.isCorrectFull(blockInfo.getCurrentOffset(), blockInfo.getContentLength())) {
                 continue;
             }
-
             Util.resetBlockIfDirty(blockInfo);
             final DownloadChain chain = DownloadChain.createChain(i, task, info, cache, store);
             blockChainList.add(chain);
@@ -335,10 +342,18 @@ public class DownloadCall extends NamedRunnable implements Comparable<DownloadCa
         Util.d(TAG, "call is finished " + task.getId());
     }
 
-    void startBlocks(List<DownloadChain> tasks) throws InterruptedException {
+    /**
+     * 开始分块下载 每块 由不同线程 去下载
+     * @param tasks
+     * @throws InterruptedException
+     */
+    private void startBlocks(List<DownloadChain> tasks) throws InterruptedException {
         ArrayList<Future> futures = new ArrayList<>(tasks.size());
         try {
             for (DownloadChain chain : tasks) {
+
+                Util.d(TAG, "开始下载 submitChain ：" + chain.getBlockIndex());
+
                 futures.add(submitChain(chain));
             }
 
@@ -377,6 +392,12 @@ public class DownloadCall extends NamedRunnable implements Comparable<DownloadCa
         DownloadTask.TaskHideWrapper.setBreakpointInfo(task, info);
     }
 
+    /**
+     * 开始检查 下载文件块
+     * @param info
+     * @param remoteCheck
+     * @param failedCause
+     */
     void assembleBlockAndCallbackFromBeginning(@NonNull BreakpointInfo info,
                                                @NonNull BreakpointRemoteCheck remoteCheck,
                                                @NonNull ResumeFailedCause failedCause) {

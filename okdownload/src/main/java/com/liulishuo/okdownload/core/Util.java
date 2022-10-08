@@ -293,10 +293,21 @@ public class Util {
         return new DownloadUrlConnection.Factory();
     }
 
+
+    /**
+     * 检查 下载文件块
+     * @param task
+     * @param info
+     * @param instanceLength
+     * @param isAcceptRange
+     */
     public static void assembleBlock(@NonNull DownloadTask task, @NonNull BreakpointInfo info,
                                      long instanceLength,
                                      boolean isAcceptRange) {
         final int blockCount;
+
+        Util.d("OkdownloadUtil", "检查块 instanceLength: " + instanceLength + " ,isAcceptRange: " + isAcceptRange);
+
         if (OkDownload.with().downloadStrategy().isUseMultiBlock(isAcceptRange)) {
             blockCount = OkDownload.with().downloadStrategy()
                     .determineBlockCount(task, instanceLength);
@@ -318,6 +329,7 @@ public class Util {
                 contentLength = eachLength;
             }
 
+            Util.d("OkdownloadUtil", "添加下载块数据 i: " + i + " ,startOffset：" + startOffset + " ,contentLength: " + contentLength);
             final BlockInfo blockInfo = new BlockInfo(startOffset, contentLength);
             info.addBlock(blockInfo);
         }
@@ -383,8 +395,11 @@ public class Util {
         if (cursor != null) {
             try {
                 cursor.moveToFirst();
-                return cursor
-                        .getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                int columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                if(columnIndex >= 0) {
+                    return cursor.getString(columnIndex);
+                }
+                return "";
             } finally {
                 cursor.close();
             }
@@ -405,8 +420,11 @@ public class Util {
         if (cursor != null) {
             try {
                 cursor.moveToFirst();
-                return cursor
-                        .getLong(cursor.getColumnIndex(OpenableColumns.SIZE));
+                int columnIndex = cursor.getColumnIndex(OpenableColumns.SIZE);
+                if(columnIndex >= 0) {
+                    return cursor.getLong(columnIndex);
+                }
+                return 0;
             } finally {
                 cursor.close();
             }

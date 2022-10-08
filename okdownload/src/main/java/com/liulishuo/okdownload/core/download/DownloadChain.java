@@ -175,7 +175,11 @@ public class DownloadChain implements Runnable {
         noCallbackIncreaseBytes = 0;
     }
 
-    void start() throws IOException {
+    /**
+     * 单块 开始真正下载
+     * @throws IOException
+     */
+    private void start() throws IOException {
         final CallbackDispatcher dispatcher = OkDownload.with().callbackDispatcher();
         // connect chain
         final RetryInterceptor retryInterceptor = new RetryInterceptor();
@@ -219,6 +223,11 @@ public class DownloadChain implements Runnable {
         connection = null;
     }
 
+    /**
+     * 调用 网络链接
+     * @return
+     * @throws IOException
+     */
     public DownloadConnection.Connected processConnect() throws IOException {
         if (cache.isInterrupt()) throw InterruptException.SIGNAL;
         return connectInterceptorList.get(connectIndex++).interceptConnect(this);
@@ -229,6 +238,11 @@ public class DownloadChain implements Runnable {
         return fetchInterceptorList.get(fetchIndex++).interceptFetch(this);
     }
 
+    /**
+     * 循环 处理 分块数据
+     * @return
+     * @throws IOException
+     */
     public long loopFetch() throws IOException {
         if (fetchIndex == fetchInterceptorList.size()) {
             // last one is fetch data interceptor

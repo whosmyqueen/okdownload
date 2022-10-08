@@ -175,6 +175,12 @@ public class ConnectTrial {
         return info.getEtag() != null && !info.getEtag().equals(responseEtag);
     }
 
+    /**
+     * 判断服务器是否 允许分段 请求
+     * @param connected
+     * @return
+     * @throws IOException
+     */
     private static boolean isAcceptRange(@NonNull DownloadConnection.Connected connected)
             throws IOException {
         if (connected.getResponseCode() == HttpURLConnection.HTTP_PARTIAL) return true;
