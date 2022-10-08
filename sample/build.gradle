@@ -70,7 +70,6 @@ dependencies {
     implementation project(':okdownload')
     implementation project(':sqlite')
     implementation project(':okhttp')
-//    implementation project(':filedownloader')
     implementation project(':kotlin')
 
     compileOnly dep.findbugsAnnotations
