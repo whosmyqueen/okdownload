@@ -168,6 +168,9 @@ public class DownloadChain implements Runnable {
         this.noCallbackIncreaseBytes += increaseBytes;
     }
 
+    /**
+     * 刷新 返回进度
+     */
     public void flushNoCallbackIncreaseBytes() {
         if (noCallbackIncreaseBytes == 0) return;
 

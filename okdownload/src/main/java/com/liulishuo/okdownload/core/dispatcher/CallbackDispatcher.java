@@ -362,11 +362,11 @@ public class CallbackDispatcher {
             }
             inspectTaskEnd(task, cause, realCause);
             if (task.isAutoCallbackToUIThread()) {
-                uiHandler.post(new Runnable() {
+                uiHandler.postDelayed(new Runnable() {
                     @Override public void run() {
                         task.getListener().taskEnd(task, cause, realCause);
                     }
-                });
+                }, 100);
             } else {
                 task.getListener().taskEnd(task, cause, realCause);
             }
