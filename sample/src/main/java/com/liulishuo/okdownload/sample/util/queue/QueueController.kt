@@ -60,7 +60,7 @@ class QueueController {
         boundTask = builder.bind(url)
         TagUtil.saveTaskName(boundTask, "4. QQ for Mac")
 
-        url = "https://pkg2.zhimg.com/zhihu/futureve-app-miniflavor-8.22.0-11628-release-zhihuwap-ca40fb89fbd4fb3a3884429e1c897fe2.apk"
+        url = "https://pkg2.zhimg.com/zhihu-dispatch/futureve-app-market(zhihuwap)-release-8.35.2(12922)-armeabi-v7a-bangcle.apk"
         boundTask = builder.bind(url)
         TagUtil.saveTaskName(boundTask, "5. ZhiHu")
 
