@@ -68,7 +68,7 @@
     <string name="fetch_start">Fetch Start</string>
     <string name="fetch_progress">Fetch Progress</string>
     <string name="fetch_end">Fetch End</string>
-    <string name="delete_files">DELETE FILES</string>
+    <string name="delete_files">删除文件</string>
 
     <string name="choose_file">Choose File...</string>
 </resources>
