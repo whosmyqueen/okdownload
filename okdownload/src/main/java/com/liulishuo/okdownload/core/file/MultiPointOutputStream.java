@@ -184,7 +184,7 @@ public class MultiPointOutputStream {
 
     final StreamsState doneState = new StreamsState();
 
-    public void done(int blockIndex) throws IOException {
+    public synchronized void done(int blockIndex) throws IOException {
         noMoreStreamList.add(blockIndex);
 
         try {
@@ -284,6 +284,7 @@ public class MultiPointOutputStream {
         if (outputStream != null) {
             outputStream.close();
             synchronized (noSyncLengthMap) {
+                // make sure the length of noSyncLengthMap is equal to outputStreamMap
                 outputStreamMap.remove(blockIndex);
                 noSyncLengthMap.remove(blockIndex);
             }
