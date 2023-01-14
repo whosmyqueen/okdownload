@@ -116,7 +116,8 @@ public class BreakpointSQLiteHelper extends SQLiteOpenHelper {
             cursor = getWritableDatabase().rawQuery(Select.ALL_FROM_TASK_FILE_DIRTY,
                     null);
             while (cursor.moveToNext()) {
-                dirtyFileList.add(cursor.getInt(cursor.getColumnIndex(ID)));
+                int idIndex = cursor.getColumnIndex(ID);
+                dirtyFileList.add(cursor.getInt(idIndex));
             }
         } finally {
             if (cursor != null) cursor.close();
@@ -173,8 +174,11 @@ public class BreakpointSQLiteHelper extends SQLiteOpenHelper {
         try {
             cursor = db.rawQuery(Select.ALL_FROM_RESPONSE_FILENAME, null);
             while (cursor.moveToNext()) {
-                final String url = cursor.getString(cursor.getColumnIndex(URL));
-                final String filename = cursor.getString(cursor.getColumnIndex(FILENAME));
+                int urlIndex = cursor.getColumnIndex(URL);
+                final String url = urlIndex >=0 ? cursor.getString(urlIndex) : "";
+
+                int fileNameIndex = cursor.getColumnIndex(FILENAME);
+                final String filename = fileNameIndex >= 0 ? cursor.getString(fileNameIndex) : "";
                 urlFilenameMap.put(url, filename);
             }
         } finally {
@@ -196,7 +200,8 @@ public class BreakpointSQLiteHelper extends SQLiteOpenHelper {
                 c = db.rawQuery(Select.FILENAME_FROM_RESPONSE_FILENAME_BY_URL, new String[]{url});
                 if (c.moveToFirst()) {
                     // exist
-                    if (!filename.equals(c.getString(c.getColumnIndex(FILENAME)))) {
+                    int fileNameIndex = c.getColumnIndex(FILENAME);
+                    if (!filename.equals(c.getString(fileNameIndex))) {
                         // replace if not equal
                         db.replace(RESPONSE_FILENAME_TABLE_NAME, null, values);
                     }

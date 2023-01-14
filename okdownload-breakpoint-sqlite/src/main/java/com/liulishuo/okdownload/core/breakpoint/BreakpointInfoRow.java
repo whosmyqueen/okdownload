@@ -38,14 +38,26 @@ public class BreakpointInfoRow {
     private final boolean chunked;
 
     public BreakpointInfoRow(Cursor cursor) {
-        this.id = cursor.getInt(cursor.getColumnIndex(ID));
-        this.url = cursor.getString(cursor.getColumnIndex(URL));
-        this.etag = cursor.getString(cursor.getColumnIndex(ETAG));
-        this.parentPath = cursor.getString(cursor.getColumnIndex(PARENT_PATH));
-        this.filename = cursor.getString(cursor.getColumnIndex(FILENAME));
-        this.taskOnlyProvidedParentPath = cursor.getInt(
-                cursor.getColumnIndex(TASK_ONLY_PARENT_PATH)) == 1;
-        this.chunked = cursor.getInt(cursor.getColumnIndex(CHUNKED)) == 1;
+        int idIndex = cursor.getColumnIndex(ID);
+        this.id = idIndex >=0 ? cursor.getInt(idIndex) : 0;
+
+        int urlIndex = cursor.getColumnIndex(URL);
+        this.url = urlIndex >= 0 ? cursor.getString(urlIndex) : "";
+
+        int etagIndex = cursor.getColumnIndex(ETAG);
+        this.etag = etagIndex >= 0 ? cursor.getString(etagIndex) : "";
+
+        int parentPathIndex = cursor.getColumnIndex(PARENT_PATH);
+        this.parentPath = parentPathIndex >=0 ? cursor.getString(parentPathIndex) : "";
+
+        int fileNameIndex = cursor.getColumnIndex(FILENAME);
+        this.filename = fileNameIndex >= 0 ? cursor.getString(fileNameIndex) : "";
+
+        int taskOnlyProvidedParentPathIndex = cursor.getColumnIndex(TASK_ONLY_PARENT_PATH);
+        this.taskOnlyProvidedParentPath = taskOnlyProvidedParentPathIndex >= 0 && cursor.getInt(taskOnlyProvidedParentPathIndex) == 1;
+
+        int chunkedIndex = cursor.getColumnIndex(CHUNKED);
+        this.chunked = chunkedIndex >= 0 && cursor.getInt(chunkedIndex) == 1;
     }
 
     public int getId() {
