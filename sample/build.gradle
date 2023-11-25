@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
 //    compileOptions {
 //        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
@@ -46,33 +46,19 @@ dependencies {
     implementation dep.supportDesign
     //noinspection GradleDependency source code is not available on 26
     implementation dep.supportV7
-    // Appcompat-v7 (only Anko Commons)
-//    implementation dep.ankoSdk
-//    implementation dep.ankoV7Commons
-//    // Appcompat-v7 (Anko Layouts)
-//    implementation dep.ankoV7
-//    implementation dep.ankoSdk25Coroutines
-//    implementation dep.ankoCoroutines
-//    // CardView-v7
-//    implementation dep.ankoCardviewV7
-    //noinspection GradleDependency
+
     implementation dep.supportCardview
-    // Design
-//    implementation dep.ankoDesign
-//    implementation dep.ankoDesignCoroutines
-    // RecyclerView-v7
-//    implementation dep.ankoRecyclerviewV7
-//    implementation dep.ankoRecyclerviewV7Coroutines
+
     implementation dep.kotlinxCoroutines
     implementation dep.kotlinxCoroutineAndroid
     implementation dep.supportConstraintLayout
-    testImplementation dep.junit
+//    testImplementation dep.junit
     implementation project(':okdownload')
     implementation project(':sqlite')
     implementation project(':okhttp')
     implementation project(':kotlin')
 
-    compileOnly dep.findbugsAnnotations
+//    compileOnly dep.findbugsAnnotations
 }
 
 kotlin {

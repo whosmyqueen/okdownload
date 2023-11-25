@@ -44,8 +44,6 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 public class DownloadCall extends NamedRunnable implements Comparable<DownloadCall> {
     private static final ExecutorService EXECUTOR = new ThreadPoolExecutor(0, Integer.MAX_VALUE,
             60, TimeUnit.SECONDS, new SynchronousQueue<Runnable>(),
@@ -419,7 +417,7 @@ public class DownloadCall extends NamedRunnable implements Comparable<DownloadCa
         return this.task.getFile();
     }
 
-    @SuppressFBWarnings(value = "Eq", justification = "This special case is just for task priority")
+//    @SuppressFBWarnings(value = "Eq", justification = "This special case is just for task priority")
     @Override
     public int compareTo(@NonNull DownloadCall o) {
         return o.getPriority() - getPriority();

@@ -40,8 +40,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 public class DownloadContext {
 
     private static final String TAG = "DownloadContext";
@@ -75,8 +73,8 @@ public class DownloadContext {
         return started;
     }
 
-    @SuppressFBWarnings(value = "EI",
-            justification = "user must know change this array will effect internal job")
+//    @SuppressFBWarnings(value = "EI",
+//            justification = "user must know change this array will effect internal job")
     public DownloadTask[] getTasks() {
         return tasks;
     }

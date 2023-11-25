@@ -31,7 +31,6 @@ import com.liulishuo.okdownload.kotlin.enqueue4WithSpeed
 import com.liulishuo.okdownload.kotlin.spChannel
 import com.liulishuo.okdownload.sample.base.BaseSampleActivity
 import com.liulishuo.okdownload.sample.util.DemoUtil
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.consumeEach
@@ -195,7 +194,7 @@ class SingleActivity : BaseSampleActivity() {
 
         private const val TAG = "SingleActivity"
 
-        @SuppressFBWarnings(value = ["REC"])
+//        @SuppressFBWarnings(value = ["REC"])
         fun fileToMD5(filePath: String): String? {
             var inputStream: InputStream? = null
             try {

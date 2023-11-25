@@ -16,8 +16,11 @@ apply from: rootProject.file('gradle/dependencies.gradle')
 
 buildscript {
     repositories {
-        google()
+//        google()
         mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
     }
     dependencies {
 //        classpath 'com.liulishuo.okcheck:gradle:0.2.3'
@@ -32,8 +35,11 @@ allprojects {
 //    apply plugin: 'okcheck'
     repositories {
 //        jcenter()
-        google()
+//        google()
         mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
     }
 
 //    okcheck {

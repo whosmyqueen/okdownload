@@ -43,13 +43,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 public class DownloadDispatcher {
 
     private static final String TAG = "DownloadDispatcher";
 
-    @SuppressFBWarnings(value = "IS", justification = "Not so urgency")
+//    @SuppressFBWarnings(value = "IS", justification = "Not so urgency")
     int maxParallelRunningCount = 5;
 
     // for sort performance(not need to copy one array), using ArrayList instead of deque(for add
@@ -70,7 +68,7 @@ public class DownloadDispatcher {
     // for avoiding processCalls when doing enqueue/cancel operation
     private final AtomicInteger skipProceedCallCount = new AtomicInteger();
 
-    @SuppressFBWarnings(value = "IS", justification = "Not so urgency")
+//    @SuppressFBWarnings(value = "IS", justification = "Not so urgency")
     private DownloadStore store;
 
     public DownloadDispatcher() {

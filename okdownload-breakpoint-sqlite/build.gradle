@@ -19,12 +19,6 @@ android {
 }
 
 dependencies {
-    testImplementation dep.junit
-    testImplementation dep.mockito
-    testImplementation dep.assertj
-    testImplementation dep.robolectric
-    testImplementation project(':okdownload')
-    
     implementation dep.supportAnnotations
 
     compileOnly project(':okdownload')

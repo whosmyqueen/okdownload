@@ -48,8 +48,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.LockSupport;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 public class MultiPointOutputStream {
     private static final String TAG = "MultiPointOutputStream";
     private static final ExecutorService FILE_IO_EXECUTOR = new ThreadPoolExecutor(0,
@@ -83,7 +81,7 @@ public class MultiPointOutputStream {
     IOException syncException;
     @NonNull ArrayList<Integer> noMoreStreamList;
 
-    @SuppressFBWarnings("IS2_INCONSISTENT_SYNC")
+//    @SuppressFBWarnings("IS2_INCONSISTENT_SYNC")
     List<Integer> requireStreamBlocks;
 
     MultiPointOutputStream(@NonNull final DownloadTask task,
